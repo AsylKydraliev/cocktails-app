@@ -3,7 +3,6 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Cocktail } from '../shared/cocktail.model';
 import { CocktailService } from '../shared/cocktail.service';
 import { urlValidator } from '../shared/url.validator.directive';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -14,7 +13,7 @@ export class FormComponent implements OnInit {
   createForm!: FormGroup;
   addButtonDisabled = false;
 
-  constructor(private cocktailService: CocktailService, private router: Router) { }
+  constructor(private cocktailService: CocktailService) { }
 
   ngOnInit() {
     this.createForm = new FormGroup({
@@ -39,7 +38,6 @@ export class FormComponent implements OnInit {
       this.createForm.value.cookingDescription,
     )
     this.cocktailService.postCocktail(cocktail);
-    void this.router.navigate(['/']);
   }
 
   addIngredient() {

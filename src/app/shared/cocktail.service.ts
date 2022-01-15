@@ -3,6 +3,7 @@ import { Cocktail } from './cocktail.model';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +14,12 @@ export class CocktailService{
   cocktailsChange = new Subject<Cocktail[]>();
   loadingChange = new Subject<boolean>();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   postCocktail(cocktail: Cocktail){
     this.http.post('https://app-blog-f76a2-default-rtdb.firebaseio.com/coctails.json', cocktail).subscribe(
       () => {
-       this.getCocktails();
+       void this.router.navigate(['/']);
       }
     );
   }
