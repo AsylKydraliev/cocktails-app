@@ -15,7 +15,11 @@ export class CocktailService{
   constructor(private http: HttpClient) {}
 
   postCocktail(cocktail: Cocktail){
-    this.http.post('https://app-blog-f76a2-default-rtdb.firebaseio.com/coctails.json', cocktail).subscribe();
+    this.http.post('https://app-blog-f76a2-default-rtdb.firebaseio.com/coctails.json', cocktail).subscribe(
+      () => {
+        this.getCocktails();
+      }
+    );
   }
 
   getCocktails(){
