@@ -88,7 +88,7 @@
       <div class="mb-2 w-100" *ngFor="let _ of getIngredientControls(); let i = index">
         <div [formGroupName]="i">
           <div class="d-flex">
-            <div>
+            <div class="w-50">
               <input
                 type="text"
                 class="form-control"
@@ -102,7 +102,7 @@
                 Enter name ingredient
               </small>
             </div>&nbsp;
-            <div>
+            <div class="w-25">
               <input
                 type="number"
                 class="form-control"
@@ -123,7 +123,7 @@
                 name="unitIngredient"
                 aria-label="Default select example"
               >
-                <option value="">Amount of ingredients</option>
+                <option value="">Unit ingredients</option>
                 <option value="Milliliters">Milliliters</option>
                 <option value="Pieces">Pieces</option>
                 <option value="Grams">Grams</option>
