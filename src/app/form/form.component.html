@@ -30,6 +30,11 @@
         class="form-text invalid-form-text">
         Enter cocktail image URL
       </small>
+      <small
+        *ngIf="fieldHasError('imageUrl', 'imageUrl')"
+        class="form-text invalid-form-text">
+        Enter correct cocktail image URL
+      </small>
     </div>
 
     <div class="mb-3">
@@ -74,11 +79,6 @@
         formControlName="description"
         name="description"
       ></textarea>
-      <small
-        *ngIf="fieldHasError('description', 'required')"
-        class="form-text invalid-form-text">
-        Enter cocktail description
-      </small>
       <label for="floatingTextarea">Description</label>
     </div>
 

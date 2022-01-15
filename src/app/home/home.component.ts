@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class HomeComponent implements OnInit , OnDestroy{
   cocktails!: Cocktail[];
-  cocktail!: Cocktail;
+  cocktail: Cocktail | null = null;
   cocktailsSubscription!: Subscription;
   openModal = false;
 
@@ -32,11 +32,11 @@ export class HomeComponent implements OnInit , OnDestroy{
     })
   }
 
-  ngOnDestroy() {
-    this.cocktailsSubscription.unsubscribe();
-  }
-
   isClose() {
     this.openModal = false;
+  }
+
+  ngOnDestroy() {
+    this.cocktailsSubscription.unsubscribe();
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Cocktail } from '../shared/cocktail.model';
 import { CocktailService } from '../shared/cocktail.service';
+import { urlValidator } from '../shared/url.validator.directive';
 
 @Component({
   selector: 'app-form',
@@ -15,7 +16,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.createForm = new FormGroup({
-      name: new FormControl('', Validators.required),
+      name: new FormControl('', [Validators.required, urlValidator]),
       imageUrl: new FormControl('', Validators.required),
       type: new FormControl('', Validators.required),
       description: new FormControl(''),

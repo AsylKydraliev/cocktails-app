@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
 import { NotFoundComponent } from './not-found.component';
+import { UrlValidatorDirective } from './shared/url.validator.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { NotFoundComponent } from './not-found.component';
     ModalComponent,
     CocktailComponent,
     FormComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    UrlValidatorDirective
   ],
   imports: [
     BrowserModule,

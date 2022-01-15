@@ -43,8 +43,4 @@ export class CocktailService{
         this.cocktailsChange.next(this.cocktails.slice());
       })
   }
-
-  // getCocktail(id: string){
-  //   this.http.get(`https://app-blog-f76a2-default-rtdb.firebaseio.com/coctails/${id}.json`).subscribe();
-  // }
 }
