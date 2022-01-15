@@ -11,18 +11,20 @@ import { Subject } from 'rxjs';
 export class CocktailService{
   cocktails: Cocktail[] | null = null;
   cocktailsChange = new Subject<Cocktail[]>();
+  loadingChange = new Subject<boolean>();
 
   constructor(private http: HttpClient) {}
 
   postCocktail(cocktail: Cocktail){
     this.http.post('https://app-blog-f76a2-default-rtdb.firebaseio.com/coctails.json', cocktail).subscribe(
       () => {
-        this.getCocktails();
+       this.getCocktails();
       }
     );
   }
 
   getCocktails(){
+    this.loadingChange.next(true);
     this.http.get<{[id: string]: Cocktail}>('https://app-blog-f76a2-default-rtdb.firebaseio.com/coctails.json')
       .pipe(map(result =>{
       if(result === null) {
@@ -45,6 +47,9 @@ export class CocktailService{
         this.cocktails = [];
         this.cocktails = result;
         this.cocktailsChange.next(this.cocktails.slice());
+        this.loadingChange.next(false);
+      }, () => {
+        this.loadingChange.next(false);
       })
   }
 }

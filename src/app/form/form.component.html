@@ -28,7 +28,7 @@
       >
       <small
         *ngIf="fieldHasError('imageUrl', 'required')"
-        class="form-text invalid-form-text">
+        class="form-text invalid-form-text d-block">
         Enter cocktail image URL
       </small>
       <small
@@ -62,7 +62,7 @@
           value="non-alcoholic"
         >
         <label class="form-check-label" for="flexRadioDefault2">
-          non-alcoholic
+          Non-alcoholic
         </label>
       </div>
       <small
@@ -84,51 +84,57 @@
     </div>
 
     <div class="mb-3" formArrayName="ingredients">
-      <button (click)="addIngredient()" type="button" class="btn btn-outline-danger mb-2">Add ingredient</button>
+      <button (click)="addIngredient()" type="button" class="btn btn-outline-warning mb-2">Add ingredients</button>
       <div class="mb-2 w-100" *ngFor="let _ of getIngredientControls(); let i = index">
         <div [formGroupName]="i">
           <div class="d-flex">
-            <input
-              type="text"
-              class="form-control"
-              formControlName="nameIngredient"
-              name="nameIngredient"
-              placeholder="Name ingredient"
-            >
-            <small
-              *ngIf="ingredientsHasError('nameIngredient', 'required', i)"
-              class="form-text invalid-form-text d-block">
-              Enter name ingredient
-            </small>
-            <input
-              type="number"
-              class="form-control"
-              formControlName="amountIngredient"
-              name="amountIngredient"
-              placeholder="Amount"
-            >
-            <small
-              *ngIf="ingredientsHasError('amountIngredient', 'required', i)"
-              class="form-text invalid-form-text">
-              Enter ingredient amount
-            </small>
-            <select
-              class="form-select me-1"
-              formControlName="unitIngredient"
-              name="unitIngredient"
-              aria-label="Default select example"
-            >
-              <option value="">Amount of ingredients</option>
-              <option value="Milliliters">Milliliters</option>
-              <option value="Pieces">Pieces</option>
-              <option value="Grams">Grams</option>
-            </select>
-            <small
-              *ngIf="ingredientsHasError('unitIngredient', 'required', i)"
-              class="form-text invalid-form-text">
-              Select ingredient unit
-            </small>
-            <button (click)="arrayElementRemove(i)" type="button" class="btn btn-danger">Delete</button>
+            <div>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="nameIngredient"
+                name="nameIngredient"
+                placeholder="Name ingredient"
+              >
+              <small
+                *ngIf="ingredientsHasError('nameIngredient', 'required', i)"
+                class="form-text invalid-form-text d-block">
+                Enter name ingredient
+              </small>
+            </div>&nbsp;
+            <div>
+              <input
+                type="number"
+                class="form-control"
+                formControlName="amountIngredient"
+                name="amountIngredient"
+                placeholder="Amount"
+              >
+              <small
+                *ngIf="ingredientsHasError('amountIngredient', 'required', i)"
+                class="form-text invalid-form-text">
+                Enter ingredient amount
+              </small>
+            </div>&nbsp;
+            <div>
+              <select
+                class="form-select"
+                formControlName="unitIngredient"
+                name="unitIngredient"
+                aria-label="Default select example"
+              >
+                <option value="">Amount of ingredients</option>
+                <option value="Milliliters">Milliliters</option>
+                <option value="Pieces">Pieces</option>
+                <option value="Grams">Grams</option>
+              </select>
+              <small
+                *ngIf="ingredientsHasError('unitIngredient', 'required', i)"
+                class="form-text invalid-form-text">
+                Select ingredient unit
+              </small>
+            </div>&nbsp;
+            <button (click)="arrayElementRemove(i)" type="button" class="btn btn-danger h-25">Delete</button>
           </div>
         </div>
       </div>

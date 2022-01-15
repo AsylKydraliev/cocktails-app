@@ -12,13 +12,18 @@ export class HomeComponent implements OnInit , OnDestroy{
   cocktails!: Cocktail[];
   cocktail: Cocktail | null = null;
   cocktailsSubscription!: Subscription;
+  loadingSubscription!: Subscription;
   openModal = false;
+  loading = false;
 
   constructor(private cocktailService: CocktailService) { }
 
   ngOnInit() {
     this.cocktailsSubscription = this.cocktailService.cocktailsChange.subscribe((cocktails: Cocktail[]) => {
       this.cocktails = cocktails;
+    })
+    this.loadingSubscription = this.cocktailService.loadingChange.subscribe((loading: boolean) => {
+      this.loading = loading;
     })
     this.cocktailService.getCocktails();
   }
@@ -38,5 +43,6 @@ export class HomeComponent implements OnInit , OnDestroy{
 
   ngOnDestroy() {
     this.cocktailsSubscription.unsubscribe();
+    this.loadingSubscription.unsubscribe();
   }
 }

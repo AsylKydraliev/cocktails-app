@@ -47,7 +47,7 @@ export class FormComponent implements OnInit {
     const ingredients = <FormArray>this.createForm.get('ingredients');
     const ingredientGroup = new FormGroup({
       nameIngredient: new FormControl('', Validators.required),
-      amountIngredient: new FormControl(0, Validators.required),
+      amountIngredient: new FormControl(null, Validators.required),
       unitIngredient: new FormControl('', Validators.required),
     })
     ingredients.push(ingredientGroup);
