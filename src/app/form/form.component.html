@@ -1,0 +1,157 @@
+<div class="container mb-5">
+  <h2 class="mt-2 text-center">Create new cocktail</h2>
+
+  <form class="col mt-4" [formGroup]="createForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3 mt-3">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+        name="name"
+        placeholder="Name"
+      >
+      <small
+        *ngIf="fieldHasError('name', 'required')"
+        class="form-text invalid-form-text">
+        Enter cocktail name
+      </small>
+    </div>
+
+    <div class="mb-3">
+      <input
+        type="text"
+        class="form-control"
+        formControlName="imageUrl"
+        name="imageUrl"
+        placeholder="Image URL"
+      >
+      <small
+        *ngIf="fieldHasError('imageUrl', 'required')"
+        class="form-text invalid-form-text">
+        Enter cocktail image URL
+      </small>
+    </div>
+
+    <div class="mb-3">
+      <div class="form-check mt-3">
+        <input
+          class="form-check-input"
+          type="radio"
+          formControlName="type"
+          name="type"
+          id="flexRadioDefault1"
+          value="alcohol"
+        >
+        <label class="form-check-label" for="flexRadioDefault1">
+          Alcohol
+        </label>
+      </div>
+      <div class="form-check mb-1">
+        <input
+          class="form-check-input"
+          type="radio"
+          formControlName="type"
+          name="type"
+          id="flexRadioDefault2"
+          value="non-alcoholic"
+        >
+        <label class="form-check-label" for="flexRadioDefault2">
+          non-alcoholic
+        </label>
+      </div>
+      <small
+        *ngIf="fieldHasError('type', 'required')"
+        class="form-text invalid-form-text">
+        Select cocktail type
+      </small>
+    </div>
+
+    <div class="form-floating mb-3">
+      <textarea
+        class="form-control"
+        placeholder="Leave a description here"
+        id="floatingTextarea"
+        formControlName="description"
+        name="description"
+      ></textarea>
+      <small
+        *ngIf="fieldHasError('description', 'required')"
+        class="form-text invalid-form-text">
+        Enter cocktail description
+      </small>
+      <label for="floatingTextarea">Description</label>
+    </div>
+
+    <div class="mb-3" formArrayName="ingredients">
+      <button (click)="addIngredient()" type="button" class="btn btn-outline-danger mb-2">Add ingredient</button>
+      <div class="mb-2 w-100" *ngFor="let _ of getIngredientControls(); let i = index">
+        <div [formGroupName]="i">
+          <div class="d-flex">
+            <input
+              type="text"
+              class="form-control"
+              formControlName="nameIngredient"
+              name="nameIngredient"
+              placeholder="Name ingredient"
+            >
+            <small
+              *ngIf="ingredientsHasError('nameIngredient', 'required', i)"
+              class="form-text invalid-form-text d-block">
+              Enter name ingredient
+            </small>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="amountIngredient"
+              name="amountIngredient"
+              placeholder="Amount"
+            >
+            <small
+              *ngIf="ingredientsHasError('amountIngredient', 'required', i)"
+              class="form-text invalid-form-text">
+              Enter ingredient amount
+            </small>
+            <select
+              class="form-select me-1"
+              formControlName="unitIngredient"
+              name="unitIngredient"
+              aria-label="Default select example"
+            >
+              <option value="">Amount of ingredients</option>
+              <option value="Milliliters">Milliliters</option>
+              <option value="Pieces">Pieces</option>
+              <option value="Grams">Grams</option>
+            </select>
+            <small
+              *ngIf="ingredientsHasError('unitIngredient', 'required', i)"
+              class="form-text invalid-form-text">
+              Select ingredient unit
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-floating mb-3">
+      <textarea
+        class="form-control"
+        placeholder="Leave a description here"
+        id="cookingDescription"
+        formControlName="cookingDescription"
+        name="cookingDescription"
+      ></textarea>
+      <small
+        *ngIf="fieldHasError('cookingDescription', 'required')"
+        class="form-text invalid-form-text">
+        Enter cocktail cooking description
+      </small>
+      <label for="cookingDescription">Cooking description</label>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-dark"
+    >Save</button>
+  </form>
+</div>
+

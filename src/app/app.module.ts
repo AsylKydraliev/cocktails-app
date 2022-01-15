@@ -7,6 +7,10 @@ import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ModalComponent } from './modal/modal.component';
 import { CocktailsComponent } from './cocktails/cocktails.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormComponent } from './form/form.component';
+import { NotFoundComponent } from './not-found.component';
 
 @NgModule({
   declarations: [
@@ -14,11 +18,15 @@ import { CocktailsComponent } from './cocktails/cocktails.component';
     HomeComponent,
     ToolbarComponent,
     ModalComponent,
-    CocktailsComponent
+    CocktailsComponent,
+    FormComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
