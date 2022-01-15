@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ModalComponent } from './modal/modal.component';
-import { CocktailsComponent } from './cocktails/cocktails.component';
+import { CocktailComponent } from './cocktail/cocktail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
@@ -18,7 +18,7 @@ import { NotFoundComponent } from './not-found.component';
     HomeComponent,
     ToolbarComponent,
     ModalComponent,
-    CocktailsComponent,
+    CocktailComponent,
     FormComponent,
     NotFoundComponent
   ],

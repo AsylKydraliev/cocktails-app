@@ -1,15 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CocktailService } from '../shared/cocktail.service';
+import { Cocktail } from '../shared/cocktail.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit , OnDestroy{
+  cocktails!: Cocktail[];
+  cocktail!: Cocktail;
+  cocktailsSubscription!: Subscription;
+  openModal = false;
 
-  constructor() { }
+  constructor(private cocktailService: CocktailService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.cocktailsSubscription = this.cocktailService.cocktailsChange.subscribe((cocktails: Cocktail[]) => {
+      this.cocktails = cocktails;
+    })
+    this.cocktailService.getCocktails();
   }
 
+  isOpen(id: string){
+    this.openModal = true;
+    this.cocktails.forEach(cocktail => {
+      if(id === cocktail.id){
+        this.cocktail = cocktail;
+      }
+    })
+  }
+
+  ngOnDestroy() {
+    this.cocktailsSubscription.unsubscribe();
+  }
+
+  isClose() {
+    this.openModal = false;
+  }
 }

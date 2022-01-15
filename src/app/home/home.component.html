@@ -1,1 +1,23 @@
-<p>home works!</p>
+<h2 class="text-center">My cocktails</h2>
+
+<div *ngFor="let cocktail of cocktails" class="block d-flex flex-wrap" (click)="isOpen(cocktail.id)" >
+  <div class="card m-2 content" style="width: 18em">
+    <img [src]="cocktail.imageUrl" class="card-img-top" alt="{{ cocktail.name }}">
+    <div class="card-body text-center">
+      <h5 class="card-title"><strong>{{ cocktail.name }}</strong> </h5>
+      <p class="card-text">Description: <strong>{{ cocktail.type }}</strong> </p>
+    </div>
+  </div>
+</div>
+
+<app-modal [isOpen]="openModal" (close)="isClose()">
+  <div class="modal-body">
+    <p>Modal body text goes here.</p>
+  </div>
+  <div class="modal-footer">
+    <button (click)="isClose()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="button" class="btn btn-primary">Save changes</button>
+  </div>
+</app-modal>
+
+

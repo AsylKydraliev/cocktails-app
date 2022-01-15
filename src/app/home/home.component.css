@@ -1,0 +1,13 @@
+.block{
+  margin-left: 50px;
+}
+
+.content:hover{
+  box-shadow: 0 0 10px 6px lightgrey;
+  border-radius: 15px;
+}
+
+img{
+  width: 100%;
+  height: 250px;
+}
