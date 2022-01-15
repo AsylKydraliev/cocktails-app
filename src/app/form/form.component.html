@@ -24,6 +24,7 @@
         formControlName="imageUrl"
         name="imageUrl"
         placeholder="Image URL"
+        appUrl
       >
       <small
         *ngIf="fieldHasError('imageUrl', 'required')"
@@ -149,6 +150,7 @@
     </div>
 
     <button
+      [disabled]="createForm.invalid || addButtonDisabled === false"
       type="submit"
       class="btn btn-dark"
     >Save</button>

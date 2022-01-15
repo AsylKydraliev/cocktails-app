@@ -17,13 +17,13 @@
     <img [src]="cocktail.imageUrl" class="card-img-top" alt="{{ cocktail.name }}">
     <p>Type cocktail: <strong>{{ cocktail.type }}</strong></p>
     <p>Description cocktail: <strong>{{ cocktail.description }}</strong></p>
-    <div *ngFor="let ingredient of cocktail.ingredients" class="card-body">
-      <h4>Ingredients:</h4>
-      <span class="card-text d-block">Name ingredient: {{ ingredient.nameIngredient }}</span>
-      <span class="card-text d-block">Amount ingredient: {{ ingredient.amountIngredient }}</span>
-      <span class="card-text d-block">Unit ingredient: {{ ingredient.unitIngredient }}</span>
+    <div *ngFor="let ingredient of cocktail.ingredients; let i = index" class="card-body">
+      <h4>Ingredients #{{ i + 1 }}:</h4>
+      <span class="card-text d-block">Name ingredient: <strong>{{ ingredient.nameIngredient }}</strong> </span>
+      <span class="card-text d-block">Amount ingredient: <strong>{{ ingredient.amountIngredient }}</strong> </span>
+      <span class="card-text d-block">Unit ingredient: <strong>{{ ingredient.unitIngredient }}</strong> </span>
     </div>
-    <p>{{ cocktail.cookingDescription }}</p>
+    <p>Cooking description: <strong>{{ cocktail.cookingDescription }}</strong></p>
   </div>
   <div class="modal-footer">
     <button (click)="isClose()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

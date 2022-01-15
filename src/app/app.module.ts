@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ModalComponent } from './modal/modal.component';
-import { CocktailComponent } from './cocktail/cocktail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormComponent } from './form/form.component';
@@ -19,7 +18,6 @@ import { UrlValidatorDirective } from './shared/url.validator.directive';
     HomeComponent,
     ToolbarComponent,
     ModalComponent,
-    CocktailComponent,
     FormComponent,
     NotFoundComponent,
     UrlValidatorDirective

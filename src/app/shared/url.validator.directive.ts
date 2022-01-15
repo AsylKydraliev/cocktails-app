@@ -3,7 +3,7 @@ import { Directive } from '@angular/core';
 
 export function urlValidator (): ValidatorFn{
   return (control: AbstractControl) : ValidationErrors | null => {
-    const hasUrl = /^[a-zA-z]$/.test(control.value);
+    const hasUrl = /\b(https?|ftp|file):\/\/[\-A-Za-z0-9+&@#\/%?=~_|!:,.;]*[\-A-Za-z0-9+&@#\/%=~_|]/.test(control.value);
 
     if(hasUrl) {
       return null;
